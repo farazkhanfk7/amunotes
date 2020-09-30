@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from django.views.generic import ListView,DetailView
 from .models import Faculty,Department
@@ -7,10 +7,18 @@ from .models import Faculty,Department
 def home(request):
     return render(request,'index.html')
 
-class FacultyListView(ListView):
-    model = Faculty
-    template_name = "faculties.html"
+def facultylist(request):
+    object_list = Faculty.objects.all()
+    return render(request,'faculties.html',{'object_list':object_list})
 
-class FacultyView(DetailView):
-    model = Department
-    template_name = "science.html"
+def faculty(request,slug):
+    if slug=='science':
+        object_list = Department.objects.filter(faculty_name='science')
+        return render(request,'science.html',{'object_list':object_list})
+    elif slug=='lifescience':
+        object_list = Department.objects.filter(faculty_name='lifescience')
+        return render(request,'life_science.html',{'object_list':object_list})
+    elif slug=='engg':
+        return render(request,'engg.html')
+    else:
+        return HttpResponse("ERROR 404. Faculty page not found")
