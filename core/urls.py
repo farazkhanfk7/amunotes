@@ -1,10 +1,12 @@
 from django.contrib import admin
 from django.urls import path,include
 from . import views
-from .views import department
+from .views import department,faculty,document
 urlpatterns = [
     path('',views.home,name="home"),
     path('facultylist',views.facultylist,name="facultylist"),
-    path('faculty/<slug>/',views.faculty, name="faculty"),
-    path('department/<slug>',department.as_view(),name="department")
+    path('faculty/<slug>/',faculty.as_view(), name="faculty"),
+    path('department/<slug>',department.as_view(),name="department"),
+    path('subject/<slug>',document.as_view(),name="subject"),
+    path('testing',views.testing,name="testing")
 ]

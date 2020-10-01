@@ -1,61 +1,89 @@
 {% extends 'base.html' %}
 {% load static %}
-
     {% block title %}
-    <title>Select Faculty</title>
+    <title>{{department.name}} Department</title>
     {% endblock title %}
     
     {% block content %}
-     <div class="bradcam_area breadcam_bg_7">
+     <!-- bradcam_area  -->
+     <div class="bradcam_area breadcam_bg_2">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <h3 style="font-weight:bold">FACULTIES</h3>
+                        <h3>{{department.name}} Department</h3>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+    <!-- /bradcam_area  -->
+
+    <!-- portfolio_image_area  -->
+    <!--
     <div class="portfolio_image_area">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="section_title text-center mb-90">
-                        <h3 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">Select Your Faculty</h3>
+                        <h3 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">Featured Works</h3>
+                        <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">Tour function information without cross action media value quickly maximize timely deliverables.</p>
                     </div>
                 </div>
             </div>
             <div class="row">
-                {% for item in object_list %}
-                <div class="col-lg-4 col-md-6 col-lg-4">
-                    <div class="single_Portfolio wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
+                <div class="col-lg-8 col-md-12">
+                    <div class="single_Portfolio wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
                         <div class="portfolio_thumb">
-                            <img src="{{item.img.url}}" alt="">
+                            <img src="img/portfolio/1.png" alt="">
                         </div>
                         <div class="portfolio_hover">
                             <div class="title">
-                                 
-                                    <h3 style="color:rgb(78, 78, 78);">{{item.name}} Faculty</h3>
-                                    <p style="color:rgb(34, 33, 32);">Select your department.</p>
-                                    <a class="boxed-btn3" href="{{item.get_absolute_url}}">Visit Faculty</a>
+                                <span>App Design</span>
+                                    <h3>Colorlib Mobile App</h3>
+                                    <a class="boxed-btn3" href="portfolio_details.html">View</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
-                <!-- <div class="col-lg-4 col-md-6 col-lg-4">
-                    <div class="single_Portfolio wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_Portfolio wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
                         <div class="portfolio_thumb">
-                            <img src="{% static 'img/portfolio/4.jpg' %}" alt="">
+                            <img src="img/portfolio/2.jpg" alt="">
                         </div>
                         <div class="portfolio_hover">
                             <div class="title">
-                                 
-                                    <h3 style="color:rgb(71, 70, 70);">Life Science Faculty</h3>
-                                    <p style="color:rgb(34, 33, 32)">Select your department.</p>
-                                    <a class="boxed-btn3" href="#">Coming Soon</a>
+                                <span>App Design</span>
+                                    <h3>Colorlib Mobile App</h3>
+                                    <a class="boxed-btn3" href="portfolio_details.html">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-lg-4">
+                    <div class="single_Portfolio wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
+                        <div class="portfolio_thumb">
+                            <img src="img/portfolio/3.png" alt="">
+                        </div>
+                        <div class="portfolio_hover">
+                            <div class="title">
+                                <span>App Design</span>
+                                    <h3>Colorlib Mobile App</h3>
+                                    <a class="boxed-btn3" href="portfolio_details.html">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-lg-4">
+                    <div class="single_Portfolio wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
+                        <div class="portfolio_thumb">
+                            <img src="img/portfolio/4.png" alt="">
+                        </div>
+                        <div class="portfolio_hover">
+                            <div class="title">
+                                <span>App Design</span>
+                                    <h3>Colorlib Mobile App</h3>
+                                    <a class="boxed-btn3" href="portfolio_details.html">View</a>
                             </div>
                         </div>
                     </div>
@@ -63,21 +91,44 @@
                 <div class="col-lg-4 col-md-6 col-lg-4">
                     <div class="single_Portfolio wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
                         <div class="portfolio_thumb">
-                            <img src="{% static 'img/portfolio/5.jpg' %}" alt="">
+                            <img src="img/portfolio/5.png" alt="">
                         </div>
                         <div class="portfolio_hover">
                             <div class="title">
-                                    <h3 style="color:rgb(80, 80, 80)">Engineering</h3>
-                                    <p style="color:rgb(34, 33, 32)">Select your department.</p>
-                                    <a class="boxed-btn3" href="#">Coming Soon</a>
+                                <span>App Design</span>
+                                    <h3>Colorlib Mobile App</h3>
+                                    <a class="boxed-btn3" href="portfolio_details.html">View</a>
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
+    </div>-->
+    <!-- portfolio_image_area  -->
+
+
+    <!-- testimonial_area  -->
+    <div style="width:70%; margin: auto;">
+        <br>
+        <br>
+        <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bolder; text-align: center;">All Subjects</h1>
+        <br>
+        {% for item in subjects %}
+        <div class="card">
+            <div class="card-header">
+              <h1>{{item.subjectcode}}</h1>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{item.subjectname}}</h5>
+              <p class="card-text">Information technology is the use of computers to store, retrieve, transmit, and manipulate data or information.</p>
+              <a href="{{item.get_absolute_url}}" class="btn btn-primary">Download Notes</a>
+              <a href="#" class="btn btn-primary secondbtn">Download Book</a>
+            </div>
+        </div>
+        {% endfor %}
+        <br>    
     </div>
-   
     <div class="testimonial_area ">
         <div class="container">
             <div class="row">
@@ -88,13 +139,13 @@
                                         <div class="quote">
                                             <img src="{% static 'img/testmonial/quote.svg' %}" alt="">
                                         </div>
-                                        <p> Nothing is more disgraceful for any nation than to throw into oblivion it's historical heritage and the works of it's ancestors.</p>
+                                        <p>The first requisite for the progress of a nation is the brotherhood and unity amongst sections of the society. </p>
                                         <div class="testmonial_author">
                                             <div class="thumb">
                                                     <img src="{% static 'img/testmonial/thumb.png' %}" alt="">
                                             </div>
                                             <h3>Sir Syed Ahmad Khan</h3>
-                                            <span>Founder Aligarh MUslim University</span>
+                                            <span>Founder, Aligarh Muslim University</span>
                                         </div>
                                     </div>
                         </div>
@@ -103,32 +154,13 @@
                                         <div class="quote">
                                             <img src="{% static 'img/testmonial/quote.svg' %}" alt="">
                                         </div>
-                                        <p>What we are not ashamed to do before God,<br>
-                                            We should not fear to do before our fellowmen</p>
+                                        <p>When a nation becomes devoid of arts and learning, it invites poverty. And when poverty comes, it brings in its wake thousands of crimes.</p>
                                         <div class="testmonial_author">
                                             <div class="thumb">
                                                     <img src="{% static 'img/testmonial/thumb.png' %}" alt="">
                                             </div>
                                             <h3>Sir Syed Ahmad Khan</h3>
-                                            <span>Founder Aligarh MUslim University</span>
-                                        </div>
-                                    </div>
-                        </div>
-                        <div class="single_carousel">
-                                <div class="single_testmonial text-center">
-                                        <div class="quote">
-                                            <img src="{% static 'img/testmonial/quote.svg' %}" alt="">
-                                        </div>
-                                        <p >We(Hindus and Muslims) eat same crop,drink same water from the same river and 
-                                            breathe the same air. As a matter of fact Hindus and Muslims are the two eyes of 
-                                            the beautiful bride that is Hindustan.Weakness of any of them will spoil the beauty 
-                                            of the bride</p>
-                                        <div class="testmonial_author">
-                                            <div class="thumb">
-                                                    <img src="{% static 'img/testmonial/thumb.png' %}" alt="">
-                                            </div>
-                                            <h3>Sir Syed Ahmad Khan</h3>
-                                            <span>Founder Aligarh MUslim UNiversity</span>
+                                            <span>Founder, Aligarh Muslim University</span>
                                         </div>
                                     </div>
                         </div>
@@ -137,6 +169,8 @@
             </div>
         </div>
     </div>
+    <!-- /testimonial_area  -->
+
     <div class="get_in_tauch_area">
         <div class="container">
             <div class="row justify-content-center">
@@ -151,4 +185,5 @@
             </div>
         </div>
     </div>
+    <!-- footer start -->
     {% endblock content %}
