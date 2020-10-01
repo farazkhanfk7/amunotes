@@ -19,6 +19,12 @@ def faculty(request,slug):
         object_list = Department.objects.filter(faculty_name='lifescience')
         return render(request,'life_science.html',{'object_list':object_list})
     elif slug=='engg':
-        return render(request,'engg.html')
+        # object_list = Department.objects.filter(faculty_name='engg')
+        # return render(request,'engg.html',{'object_list':object_list})
+        return HttpResponse("ERROR 404. Engineering Faculty page not found")
     else:
         return HttpResponse("ERROR 404. Faculty page not found")
+
+class department(DetailView):
+    model = Department
+    template_name = "csd.html"
