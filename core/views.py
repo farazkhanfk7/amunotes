@@ -1,7 +1,8 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from django.views.generic import ListView,DetailView
 from .models import Faculty,Department,Subject,Notes
+from core.forms import NoteForm
 
 # Create your views here.
 def home(request):
@@ -73,8 +74,13 @@ class document(DetailView):
         context['notes'] = Notes.objects.filter(slug=subjectcode)
         return context
 
+def uploadfile(request):
+    if request.method == 'POST':
+        form = NoteForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponse("ho gya save")
 
-def testing(request):
-    dep = Department()
-    code = dep.get_code()
-    return HttpResponse(code)
+    else:
+        form = NoteForm()
+        return render(request,'upload.html',{'form':form})

@@ -55,7 +55,6 @@ class Subject(models.Model):
     def get_absolute_url(self):
         return reverse("subject", kwargs={'slug': self.slug })
 
-
 class Notes(models.Model):
     subject = models.ForeignKey(Subject,on_delete=models.CASCADE,default=1)
     topic = models.CharField(max_length=100)

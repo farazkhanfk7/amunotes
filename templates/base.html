@@ -46,7 +46,17 @@
                                     <ul id="navigation">
                                         <li><a class="/" href="/">home</a></li>
                                         <li><a href="about.html">About Us</a></li>
-                                        <li><a href="contact.html">Contact Us</a></li>   
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                        {% if user.is_authenticated %}
+                                        <!-- <button class="boxed-btn3 wow fadeInUp">You're logged in as {{user.username}} !</button> -->
+                                        <a class="boxed-btn3 wow fadeInUp" href="#" role="button">You're {{user.username}} <img class="rounded-circle" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" height="30" alt="USA flag"></a>
+                                        <!-- <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" /> -->
+                                        {% else %}
+                                        <a href="/accounts/login" class="boxed-btn3 wow fadeInUp">Teacher Login</a>
+                                        {% endif %}
+                                        {% if user.is_authenticated %}
+                                        <a href="/accounts/logout" class="ml-1 boxed-btn3 wow fadeInUp">Log Out</a>
+                                        {% endif %}
                                     </ul>
                                 </nav>
                             </div>
