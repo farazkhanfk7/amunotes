@@ -7,6 +7,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     {% block title %}
     {% endblock title %}
+    <title>{% block titlename%}{% endblock titlename%}</title>
+    <!-- the above titlename was used because title is preused keyword in allauth files -->
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -49,7 +51,11 @@
                                         <li><a href="contact.html">Contact Us</a></li>
                                         {% if user.is_authenticated %}
                                         <!-- <button class="boxed-btn3 wow fadeInUp">You're logged in as {{user.username}} !</button> -->
+                                        {%if user.socialaccount_set.all.0.get_avatar_url%}
                                         <a class="boxed-btn3 wow fadeInUp" href="#" role="button">You're {{user.username}} <img class="rounded-circle" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" height="30" alt="USA flag"></a>
+                                        {% else %}
+                                        <a class="boxed-btn3 wow fadeInUp" href="#" role="button">You're {{user.username}} </a>
+                                        {% endif %}
                                         <!-- <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" /> -->
                                         {% else %}
                                         <a href="/accounts/login" class="boxed-btn3 wow fadeInUp">Teacher Login</a>

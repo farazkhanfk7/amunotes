@@ -1,12 +1,26 @@
 {% extends "account/base.html" %}
-
+{% load static %}
 {% load i18n %}
 {% load account %}
-
-{% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
+{% load crispy_forms_tags %}
+{% block titlename%}Confirm E-mail{% endblock titlename%}
 
 
 {% block content %}
+<!-- bradcam_area  -->
+<div class="bradcam_area" style="background-image: url('{% static 'img/banner/notes.jpeg' %}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>{% trans "Confirm E-mail" %}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="m-5">
+    <div class="container card text-center p-4 col-5">
 <h1>{% trans "Confirm E-mail Address" %}</h1>
 
 {% if confirmation %}
@@ -17,7 +31,7 @@
 
 <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
 {% csrf_token %}
-    <button type="submit">{% trans 'Confirm' %}</button>
+    <button class="boxed-btn3 wow" type="submit">{% trans 'Confirm' %}</button>
 </form>
 
 {% else %}
@@ -27,5 +41,7 @@
 <p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}</p>
 
 {% endif %}
+</div>
+</div>
 
 {% endblock %}
