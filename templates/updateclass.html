@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="bradcam_text">
-                    <h3>Class Notes</h3>
+                    <h3>Update Class</h3>
                 </div>
             </div>
         </div>
@@ -21,16 +21,17 @@
 <div class="m-5">
 <div class="container card text-center p-4 col-5">
 <div class="m-3">
-<h3 class="m-3">Upload Class Notes</h3>
+<h3 class="m-3">Update Class</h3>
 {% if messages %}
 {% for message in messages %}
 <p {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %}>{{message | escape }}</p>
 {% endfor %}
 {% endif %}
 </div>
-<form action="uploadfile" method="POST" enctype="multipart/form-data">
+<form action="updateclass" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ searchform.as_p }}
+    {{updateform.as_p}}
     <input class="boxed-btn3 wow" type="submit">
 </form>
 </div>

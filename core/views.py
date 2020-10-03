@@ -2,7 +2,9 @@ from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from django.views.generic import ListView,DetailView
 from .models import Faculty,Department,Subject,Notes
-from core.forms import NoteForm
+from core.forms import NoteForm,SearchForm,ClassSearchForm,ClassUpdateForm
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
@@ -74,13 +76,59 @@ class document(DetailView):
         context['notes'] = Notes.objects.filter(slug=subjectcode)
         return context
 
+@login_required(login_url='/')
 def uploadfile(request):
     if request.method == 'POST':
         form = NoteForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
-            return HttpResponse("ho gya save")
+            messages.add_message(request, messages.INFO, 'File Upload Successful !')
+            return render(request,'upload.html',{'form':form})
 
     else:
         form = NoteForm()
         return render(request,'upload.html',{'form':form})
+
+def search_class(request):
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            # post = form.save(commit=False)
+            depname = form.cleaned_data.get('department')
+            data = Subject.objects.filter(department=depname)
+            # return HttpResponse(depname)
+            return render(request,'search.html',{'form':form,'depname':depname,'data':data})
+        else:
+            return HttpResponse("Error in form")
+    else:
+        form = SearchForm()
+        return render(request,'search.html',{'form':form})
+
+@login_required(login_url='/')
+def updateclass(request):
+    if request.method == 'POST':
+        searchform = ClassSearchForm(request.POST)
+        updateform = ClassUpdateForm(request.POST)
+        if searchform.is_valid() and updateform.is_valid():
+            # to get subjectname
+            subject_name_full_str = searchform.cleaned_data.get('subject')
+            subject_name_full_str = str(subject_name_full_str)
+            subjectcode_slug = subject_name_full_str.split("(")[1].split(")")[0].lower()
+            #to get starttime,stoptime and meetllink
+            starttime = updateform.cleaned_data.get('starttime')
+            stoptime = updateform.cleaned_data.get('stoptime')
+            meetlink = updateform.cleaned_data.get('meetlink')
+            b = Subject.objects.get(slug=subjectcode_slug)
+            b.starttime = starttime
+            b.stoptime = stoptime
+            b.meetlink = meetlink
+            b.save()
+            messages.add_message(request, messages.INFO, 'Successfully Updated class details!')
+            return redirect("updateclass")
+        else:
+            messages.add_message(request, messages.INFO, 'Error while updating')
+            return render(request,'updateclass.html',{'searchform':searchform,'updateform':updateform})
+    else:
+        searchform = ClassSearchForm()
+        updateform = ClassUpdateForm()
+        return render(request,'updateclass.html',{'searchform':searchform,'updateform':updateform})

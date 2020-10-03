@@ -8,5 +8,7 @@ urlpatterns = [
     path('faculty/<slug>/',faculty.as_view(), name="faculty"),
     path('department/<slug>',department.as_view(),name="department"),
     path('subject/<slug>',document.as_view(),name="subject"),
-    path('uploadfile',views.uploadfile,name="uploadfile")
+    path('uploadfile',views.uploadfile,name="uploadfile"),
+    path('search_class',views.search_class,name="search_class"),
+    path('updateclass',views.updateclass,name="updateclass")
 ]

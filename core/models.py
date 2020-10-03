@@ -1,10 +1,14 @@
 from django.db import models
 from django.shortcuts import reverse
 
-DEPARTMENT_SUBCODES = (
-    ('csd', 'ccb'),
-    ('maths', 'mmb')
+TIME_CHOICES = (
+    ('9:00 AM', '9:00 AM'),
+    ('10:00 AM', '10:00 AM'),
+    ('11:00 AM', '11:00 AM'),
+    ('12:00 PM', '12:00 PM'),
+    ('1:00 PM', '1:00 PM')
 )
+
 
 # Create your models here.
 class Faculty(models.Model):
@@ -43,11 +47,13 @@ class Subject(models.Model):
     departmentcode = models.CharField(max_length=100)
     subjectcode = models.CharField(max_length=100)
     subjectname = models.CharField(max_length=100)
-    about = models.CharField(max_length=100)
+    starttime = models.CharField(choices=TIME_CHOICES,max_length=10)
+    stoptime = models.CharField(choices=TIME_CHOICES,max_length=10)
+    meetlink = models.CharField(max_length=100)
     slug = models.SlugField()
     
     def __str__(self):
-        return self.subjectcode
+        return f'{self.subjectname} ({self.subjectcode })'
 
     def get_code(self):
         return self.slug

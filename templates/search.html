@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Upload Files</title>
+{% endblock title %}
+
+{% block content %}
+ <!-- bradcam_area  -->
+ <div class="bradcam_area" style="background-image: url('{% static 'img/banner/notes.jpeg' %}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>Search Classes</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="m-5">
+<div class="container card text-center p-4 col-8">
+<div class="m-3">
+{% if messages %}
+{% for message in messages %}
+<p {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %}>{{message | escape }}</p>
+{% endfor %}
+{% endif %}
+</div>
+<form class="container text-center p-4 col-6" action="search_class" method="POST">
+    {% csrf_token %}
+    <h5 class="card-title">Search classes</h5>
+    {{form.as_p}}                       
+    <button type="submit" class="boxed-btn3 wow">Search</button>
+</form>
+{% if data %}
+<div class="m-5">
+    <h3 class="mb-4" >Department of {{depname}}</h3>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Start Time</th>
+            <th scope="col">End Time</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for item in data %}
+          <tr>
+            <th scope="row">{{item.subjectname}} ({{item.subjectcode}})</th>
+            <td>{{item.starttime}}</td>
+            <td>{{item.stoptime}}</td>
+            <td><a class="boxed-btn3" href="{{item.meetlink}}" target="_blank">Join Class</a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endif %}
+</div>
+</div>
+
+{% endblock content %}

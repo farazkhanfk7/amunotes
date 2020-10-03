@@ -46,9 +46,9 @@
                             <div class="main-menu  d-none d-lg-block text-center">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="/" href="/">home</a></li>
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="contact.html">Contact Us</a></li>
+                                        <li><a class="active" href="/">home</a></li>
+                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="#">Contact Us</a></li>
                                         {% if user.is_authenticated %}
                                         <!-- <button class="boxed-btn3 wow fadeInUp">You're logged in as {{user.username}} !</button> -->
                                         {%if user.socialaccount_set.all.0.get_avatar_url%}
@@ -119,7 +119,7 @@
                     <div class="col-xl-12">
                         <p class="copy_right text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.3s">
                             <!--  -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | AMU Notes </a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | AMU Notes |</a><a class="wow fadeInUp" style="color: rgb(255, 255, 255);" href="https://www.github.com/farazkhanfk7/amunotes" target="_blank"> Github</a>
 <!--  -->
                         </p>
                     </div>
