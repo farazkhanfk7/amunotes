@@ -1,6 +1,5 @@
 .vscode
 __pycache__
 media/
-migrations/
 assets/
 sent_emails/
