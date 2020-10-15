@@ -83,10 +83,10 @@ WSGI_APPLICATION = 'amunotes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'amunotes',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost'
+        'HOST': 'db',
+        'PORT': 5432
     }
 }
 
